@@ -1,0 +1,203 @@
+:root {
+  --paper: rgba(233, 226, 216, 0.92);
+  --muted: rgba(233, 226, 216, 0.54);
+  --line: rgba(255, 255, 255, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background:
+    radial-gradient(circle at 50% 62%, rgba(124, 89, 44, 0.14), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 15%),
+    #000;
+  isolation: isolate;
+  user-select: none;
+  cursor: ew-resize;
+}
+
+.scene-layer,
+.copy-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.scene-layer canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.copy-layer {
+  pointer-events: none;
+}
+
+.copy-line {
+  position: absolute;
+  color: var(--paper);
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 0.006em;
+  white-space: pre;
+  text-wrap: nowrap;
+  text-rendering: geometricPrecision;
+  mix-blend-mode: screen;
+}
+
+.copy-block {
+  position: absolute;
+  width: min(31vw, 430px);
+  color: var(--paper);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.copy-meta {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  line-height: 1.4;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.copy-title {
+  margin: 0;
+  color: var(--paper);
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 28px;
+  line-height: 0.9;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: pre-line;
+  text-wrap: balance;
+}
+
+.copy-title[hidden] {
+  display: none;
+}
+
+#block-left .copy-title {
+  font-size: clamp(28px, 3.1vw, 44px);
+  line-height: 0.86;
+  letter-spacing: 0.07em;
+}
+
+#block-center .copy-title,
+#block-right .copy-title,
+#block-note .copy-title {
+  font-size: 15px;
+  line-height: 1.02;
+  letter-spacing: 0.16em;
+}
+
+#block-left .copy-meta {
+  color: rgba(233, 226, 216, 0.72);
+}
+
+#block-left {
+  left: 32px;
+  top: 30px;
+}
+
+#block-center {
+  left: 35.6vw;
+  top: 30px;
+}
+
+#block-right {
+  right: 38px;
+  top: 30px;
+  width: min(27vw, 360px);
+}
+
+#block-note {
+  right: 38px;
+  top: 250px;
+  width: min(27vw, 360px);
+}
+
+.scrub-track {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 34px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.22);
+  z-index: 3;
+}
+
+.scrub-fill {
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.84);
+  transform-origin: left center;
+}
+
+.status-chip {
+  position: absolute;
+  right: 28px;
+  bottom: 50px;
+  padding: 10px 14px;
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.45);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  z-index: 4;
+}
+
+@media (max-width: 980px) {
+  .copy-line {
+    font-size: 13px;
+  }
+
+  .copy-block,
+  #block-right,
+  #block-note {
+    width: calc(100vw - 44px);
+    left: 22px;
+    right: auto;
+  }
+
+  #block-left {
+    top: 24px;
+  }
+
+  #block-center {
+    top: 152px;
+  }
+
+  #block-right {
+    top: 280px;
+  }
+
+  #block-note {
+    top: 408px;
+  }
+
+  .copy-title {
+    font-size: 24px;
+  }
+}

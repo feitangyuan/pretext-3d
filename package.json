@@ -1,0 +1,17 @@
+{
+  "name": "pretext-3d",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4173",
+    "build": "vite build",
+    "check": "node --check main.mjs && node --check mask-layout.mjs && node --test mask-layout.test.mjs"
+  },
+  "dependencies": {
+    "@chenglou/pretext": "^0.0.3",
+    "three": "^0.166.1"
+  },
+  "devDependencies": {
+    "vite": "^5.4.8"
+  }
+}
